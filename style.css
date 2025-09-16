@@ -1,0 +1,181 @@
+:root {
+    --primary: royalblue;
+    --secondary: dodgerblue;
+    --bg: #f9fafb;
+    --text: #333;
+    --radius: 8px;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --section-bg: #ffffff;
+    --section-text: #1a1a1a;
+    --card-bg: #ffffff;
+    --card-text: #1a1a1a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+body {
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.container {
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.hero.center { text-align: center; }
+.hero.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+.hero.full-bg {
+    color: white;
+    padding: 6rem 2rem;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    border-radius: var(--radius);
+}
+
+.about {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+}
+.about.img-left {
+    grid-template-columns: 1fr 1fr;
+}
+.about img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.gallery.grid {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.gallery img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+.gallery img:hover { transform: scale(1.05); }
+
+.testimonials {
+    display: grid;
+    gap: 1.5rem;
+    text-align: center;
+}
+.testimonials blockquote {
+    font-style: italic;
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary);
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.pricing {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.pricing .card {
+    text-align: center;
+}
+.pricing strong {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-top: 1rem;
+}
+
+.contact {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.contact form {
+    display: grid;
+    gap: 1rem;
+}
+.contact input, .contact textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    font: inherit;
+}
+.contact button {
+    cursor: pointer;
+}
+
+.features, .cards, .blog, .shop {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+}
+.card:hover { transform: scale(1.02); }
+.card img { border-radius: var(--radius); margin-bottom: 0.5rem; }
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background: var(--secondary);
+    color: #f0f0f0;
+}
+
+.footer {
+    padding: 1.5rem;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+}
+.footer nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+.footer nav a:hover { text-decoration: underline; }
+
+section {
+    background: var(--section-bg);
+    color: var(--section-text);
+}
+
+.card, .pricing .card, .contact, .testimonials blockquote {
+    background: var(--card-bg);
+    color: var(--card-text);
+}
