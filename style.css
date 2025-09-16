@@ -161,16 +161,42 @@ body[style*="0f172a"] section:nth-of-type(even) {
 }
 
 .testimonials blockquote {
-    font-style: italic;
     padding: 2rem;
-    max-width: 600px;
     margin: 0 auto;
-    border-left: 4px solid var(--primary);
+    max-width: 650px;
     background: var(--card-bg);
     color: var(--card-text);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    position: relative;
 }
+
+.testimonials blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+    margin-top: -1rem;
+}
+
+.testimonials cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--secondary);
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
 
 .pricing {
     display: grid;

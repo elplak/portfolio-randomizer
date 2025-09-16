@@ -16,22 +16,61 @@ const texts = [
 
 const themes = [
     {
-        bg: "#ffffff", text: "#1a1a1a", primary: "#2563eb", secondary: "#1d4ed8",
-        font: "'Poppins', sans-serif",
-        sectionBg: "#f9fafb", sectionText: "#111",
-        cardBg: "#fff", cardText: "#1a1a1a"
-    },
-    {
-        bg: "#0f172a", text: "#e2e8f0", primary: "#9333ea", secondary: "#6b21a8",
-        font: "'Roboto Slab', serif",
-        sectionBg: "#1e293b", sectionText: "#e2e8f0",
-        cardBg: "#1e293b", cardText: "#e2e8f0"
-    },
-    {
-        bg: "#f9fafb", text: "#111", primary: "#f59e0b", secondary: "#d97706",
+        bg: "#ffffff",
+        text: "#111827",
+        primary: "#2563eb",
+        secondary: "#1e40af",
         font: "'Inter', sans-serif",
-        sectionBg: "#fff", sectionText: "#111",
-        cardBg: "#fff", cardText: "#111"
+        radius: "12px",
+        shadow: "0 4px 16px rgba(0,0,0,0.06)"
+    },
+    {
+        bg: "#f8f9fa",
+        text: "#1f2937",
+        primary: "#0d9488",
+        secondary: "#115e59",
+        font: "'Poppins', sans-serif",
+        radius: "16px",
+        shadow: "0 6px 20px rgba(0,0,0,0.08)"
+    },
+    {
+        bg: "#fafafa",
+        text: "#1a1a1a",
+        primary: "#f59e0b",
+        secondary: "#b45309",
+        font: "'Outfit', sans-serif",
+        radius: "20px",
+        shadow: "0 8px 24px rgba(0,0,0,0.1)"
+    },
+    {
+        bg: "#1a1a1a",
+        text: "#f3f4f6",
+        primary: "#e11d48",
+        secondary: "#9f1239",
+        font: "'Roboto Slab', serif",
+        radius: "10px",
+        shadow: "0 8px 20px rgba(0,0,0,0.4)"
+    }
+];
+
+const effects = [
+    {
+        hero: "effect-hero-spin",
+        card: "effect-glass",
+        gallery: "effect-tilt",
+        button: "effect-glow"
+    },
+    {
+        hero: "effect-hero-gradient",
+        card: "effect-lift",
+        gallery: "effect-zoom",
+        button: "effect-outline"
+    },
+    {
+        hero: "effect-hero-parallax",
+        card: "effect-shadow",
+        gallery: "effect-rotate",
+        button: "effect-bounce"
     }
 ];
 
@@ -41,13 +80,19 @@ function applyRandomDesign() {
     document.body.style.setProperty("--secondary", theme.secondary);
     document.body.style.setProperty("--bg", theme.bg);
     document.body.style.setProperty("--text", theme.text);
-    document.body.style.setProperty("--radius", "14px");
-    document.body.style.setProperty("--shadow", "0 8px 24px rgba(0,0,0,0.08)");
     document.body.style.fontFamily = theme.font;
-    document.body.style.setProperty("--section-bg", theme.sectionBg);
-    document.body.style.setProperty("--section-text", theme.sectionText);
-    document.body.style.setProperty("--card-bg", theme.cardBg);
-    document.body.style.setProperty("--card-text", theme.cardText);
+    document.body.style.setProperty("--radius", theme.radius);
+    document.body.style.setProperty("--shadow", theme.shadow);
+    document.body.style.setProperty("--section-bg", theme.bg);
+    document.body.style.setProperty("--section-text", theme.text);
+    document.body.style.setProperty("--card-bg", theme.bg);
+    document.body.style.setProperty("--card-text", theme.text);
+}
+
+function applyRandomEffects() {
+    const effect = effects[Math.floor(Math.random() * effects.length)];
+    document.body.className = "";
+    document.body.classList.add(effect.hero, effect.card, effect.gallery, effect.button);
 }
 
 const components = {
@@ -70,10 +115,6 @@ const components = {
     </section>`
     ],
     about: [
-        () => `<section class="about">
-      <h2>About me</h2>
-      <p>${texts[Math.floor(Math.random() * texts.length)]}</p>
-    </section>`,
         () => `<section class="about img-left">
       <img src="https://picsum.photos/400/300?random=${Math.random()}" alt="About">
       <div>
@@ -160,7 +201,7 @@ function getSelectedSections() {
 
 function generate() {
     let html = "";
-    const selected = getSelectedSections();
+    const selected = shuffle(getSelectedSections());
 
     if (selected.includes("hero")) {
         const hero = components.hero[Math.floor(Math.random() * components.hero.length)];
@@ -179,6 +220,17 @@ function generate() {
         html += contact();
     }
 
+    const layouts = ["container narrow", "container wide", "container boxed"];
+    const mainEl = document.querySelector("main.container");
+    if (mainEl) {
+        mainEl.className = layouts[Math.floor(Math.random() * layouts.length)];
+    }
+
     document.getElementById("app").innerHTML = html;
     applyRandomDesign();
+    applyRandomEffects();
+}
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
 }

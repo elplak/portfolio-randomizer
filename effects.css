@@ -1,0 +1,54 @@
+.effect-hero-spin .hero::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 60%);
+    animation: spin 25s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.effect-hero-gradient .hero {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.effect-glass .card,
+.effect-glass .testimonials blockquote {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.effect-lift .card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+.effect-tilt .gallery img:hover {
+    transform: rotate(-1.5deg) scale(1.05);
+}
+
+.effect-zoom .gallery img:hover {
+    transform: scale(1.15);
+}
+
+.effect-glow .btn:hover {
+    box-shadow: 0 0 16px var(--primary), 0 0 32px var(--secondary);
+}
+
+.effect-bounce .btn:hover {
+    animation: bounce 0.4s;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
