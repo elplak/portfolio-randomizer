@@ -1,4 +1,6 @@
-function initLayoutControls() {
+import { generate } from "./generator.js";
+
+export function initLayoutControls() {
     const generateBtn = document.getElementById("generateBtn");
     const downloadBtn = document.getElementById("downloadBtn");
 
@@ -6,8 +8,8 @@ function initLayoutControls() {
         return;
     }
 
-    generateBtn.addEventListener("click", () => {
-        generate();
+    generateBtn.addEventListener("click", async () => {
+        await generate();
     });
 
     downloadBtn.addEventListener("click", () => {
@@ -36,7 +38,7 @@ ${footerHTML}
 </body>
 </html>`;
 
-        const blob = new Blob([fullHTML], {type: "text/html"});
+        const blob = new Blob([fullHTML], { type: "text/html" });
         const url = URL.createObjectURL(blob);
         const anchorElement = document.createElement("a");
         anchorElement.href = url;

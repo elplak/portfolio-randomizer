@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Random Frontend Generator</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="effects.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/effects.css"/>
+    <link rel="stylesheet" href="css/toolbar.css"/>
 </head>
 <body>
 <header id="toolbar-container"></header>
 <main id="app" class="container"></main>
 
-<script src="script.js"></script>
-<script src="layout.js"></script>
-<script>
+<script type="module">
+    import { initLayoutControls } from "./js/layout.js";
+    import { generate } from "./js/generator.js";
+
     fetch("toolbar.html")
         .then(res => res.text())
         .then(html => {
