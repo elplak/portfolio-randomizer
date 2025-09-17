@@ -55,8 +55,102 @@ export const themes = [
     }
 ];
 
+function hslToHex(hue, saturationPercent, lightnessPercent) {
+    saturationPercent /= 100;
+    lightnessPercent /= 100;
+    const hueOffset = n => (n + hue / 30) % 12;
+    const chroma = saturationPercent * Math.min(lightnessPercent, 1 - lightnessPercent);
+
+    // calculate lightness adjustment factor
+    const channel = n =>
+        lightnessPercent - chroma * Math.max(-1, Math.min(hueOffset(n) - 3, Math.min(9 - hueOffset(n), 1)));
+    return (
+        "#" +
+        [channel(0), channel(8), channel(4)]
+            .map(x =>
+                Math.round(x * 255)
+                    .toString(16)
+                    .padStart(2, "0")
+            )
+            .join("")
+    );
+}
+
+function hexToRgb(hex) {
+    const bigint = parseInt(hex.slice(1), 16);
+    return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+}
+
+function luminance([r, g, b]) {
+    const linearRgb = [r, g, b].map(value => {
+        value /= 255;
+        return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * linearRgb[0] + 0.7152 * linearRgb[1] + 0.0722 * linearRgb[2];
+}
+
+function contrastRatio(hex1, hex2) {
+    const l1 = luminance(hexToRgb(hex1));
+    const l2 = luminance(hexToRgb(hex2));
+    return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+
+function pickTextColor(bgHex) {
+    const black = "#000000";
+    const white = "#ffffff";
+    const ratioBlack = contrastRatio(bgHex, black);
+    const ratioWhite = contrastRatio(bgHex, white);
+    return ratioBlack >= ratioWhite ? black : white;
+}
+
+export function generateRandomTheme() {
+    let theme;
+    let tries = 0;
+
+    do {
+        const hue = Math.floor(Math.random() * 360);
+
+        const isDark = Math.random() < 0.5;
+        const bgL = isDark ? 12 + Math.random() * 10 : 92 + Math.random() * 5;
+        const bgHex = hslToHex(hue, 25, bgL);
+
+        const primaryHex = hslToHex(hue, 70, isDark ? 55 : 45);
+        const secondaryHex = hslToHex((hue + 30) % 360, 70, isDark ? 60 : 40);
+
+        const textColor = pickTextColor(bgHex);
+
+        theme = {
+            bg: bgHex,
+            text: textColor,
+            primary: primaryHex,
+            secondary: secondaryHex,
+            font: [
+                "'Inter'",
+                "'Poppins'",
+                "'Outfit'",
+                "'Fira Sans'",
+                "'Merriweather'"
+            ][Math.floor(Math.random() * 5)] + ", sans-serif",
+            radius: `${10 + Math.floor(Math.random() * 12)}px`,
+            shadow: `0 ${4 + Math.random() * 10}px ${
+                16 + Math.random() * 20
+            }px rgba(0,0,0,${isDark ? 0.5 : 0.1})`
+        };
+
+        tries++;
+    } while (contrastRatio(theme.bg, theme.text) < 4.5 && tries < 10);
+
+    return theme;
+}
+
 export function applyRandomDesign() {
-    const theme = themes[Math.floor(Math.random() * themes.length)];
+    let theme;
+    if (Math.random() < 0.5) {
+        theme = themes[Math.floor(Math.random() * themes.length)];
+    } else {
+        theme = generateRandomTheme();
+    }
+
     document.body.style.setProperty("--primary", theme.primary);
     document.body.style.setProperty("--secondary", theme.secondary);
     document.body.style.setProperty("--bg", theme.bg);
