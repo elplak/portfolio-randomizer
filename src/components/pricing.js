@@ -1,6 +1,6 @@
 import { randomChoice, randomBool } from "../utils/random.js";
 import { btnVariants } from "../data/buttonVariants.js";
-import {getLoremCached} from "../../js/lorem.js";
+import {getLoremCached} from "../lorem.js";
 
 export const pricing = [
     async () => {

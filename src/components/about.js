@@ -1,5 +1,5 @@
 import { randomChoice, randomBool } from "../utils/random.js";
-import {getLoremCached} from "../../js/lorem.js";
+import {getLoremCached} from "../lorem.js";
 
 export const about = [
     async () => `<section class="about img-left draggable-section" draggable="true">

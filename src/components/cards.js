@@ -1,5 +1,5 @@
 import { randomBool } from "../utils/random.js";
-import {getLoremCached} from "../../js/lorem.js";
+import {getLoremCached} from "../lorem.js";
 
 export const cards = [
     async () => {
