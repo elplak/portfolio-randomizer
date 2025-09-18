@@ -4,7 +4,7 @@ Portfolio Randomizer is a small web app that creates **portfolio websites on the
 Click a button, and you’ll get a random combination of layout, sections, styles, and effects.  
 Every result is a little different: sometimes minimal, sometimes bold, always surprising.
 
-The idea is simple: instead of starting at a blank page when starting a personal website, you can let the generator throw ideas at you. Shuffle the sections, try out new colors, move things around, and export a complete site once you’re happy.
+The idea is simple: instead of starting with a blank page when starting a personal website, you can let the generator throw ideas at you. Shuffle the sections, try out new colors, move things around, and export a complete site once you’re happy.
 
 ## How it works
 
