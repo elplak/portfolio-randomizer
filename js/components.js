@@ -16,14 +16,14 @@ const btnVariants = ["btn", "btn small", "btn outline"];
 
 export const components = {
     hero: [
-        async () => `<section class="hero center">
+        async () => `<section class="hero center draggable-section" draggable="true">
       <h1>${slogans[Math.floor(Math.random() * slogans.length)]}</h1>
       <p>${await getLoremCached(Math.random() > 0.5 ? 1 : 2)}</p>
       <a href="#" class="${btnVariants[Math.floor(Math.random() * btnVariants.length)]}">
         ${Math.random() > 0.5 ? "Learn more" : "Get started"}
       </a>
     </section>`,
-        async () => `<section class="hero split">
+        async () => `<section class="hero split draggable-section" draggable="true">
       <div>
         <h1>${Math.random() > 0.5
             ? "Portfolio " + Math.floor(Math.random() * 2050)
@@ -35,19 +35,19 @@ export const components = {
       </div>
       <img src="https://picsum.photos/${Math.random() > 0.5 ? "600/400" : "500/350"}?random=${Math.random()}" alt="Hero">
     </section>`,
-        async () => `<section class="hero full-bg" style="background-image:url('https://picsum.photos/${1200 + Math.floor(Math.random() * 100)}/${400 + Math.floor(Math.random() * 100)}?random=${Math.random()}')">
+        async () => `<section class="hero full-bg draggable-section" draggable="true" style="background-image:url('https://picsum.photos/${1200 + Math.floor(Math.random() * 100)}/${400 + Math.floor(Math.random() * 100)}?random=${Math.random()}')">
       <h1>${slogans[Math.floor(Math.random() * slogans.length)]}</h1>
     </section>`
     ],
     about: [
-        async () => `<section class="about img-left">
+        async () => `<section class="about img-left draggable-section" draggable="true">
       <img src="https://picsum.photos/${Math.random() > 0.5 ? "400/300" : "350/250"}?random=${Math.random()}" alt="About">
       <div>
         <h2>${Math.random() > 0.5 ? "Who I am" : "About Me"}</h2>
         <p>${await getLoremCached(Math.random() > 0.5 ? 1 : 2)}</p>
       </div>
     </section>`,
-        async () => `<section class="about simple">
+        async () => `<section class="about simple draggable-section" draggable="true">
       <h2>${Math.random() > 0.5 ? "About Me" : "My Story"}</h2>
       <p>${await getLoremCached(2)}</p>
     </section>`
@@ -55,7 +55,7 @@ export const components = {
     features: [
         async () => {
             const count = 3 + Math.floor(Math.random() * 3);
-            return `<section class="features">
+            return `<section class="features draggable-section" draggable="true">
               ${await Promise.all(
                 Array.from({length: count}).map(
                     async (_, i) => `
@@ -71,7 +71,7 @@ export const components = {
     cards: [
         async () => {
             const count = 3 + Math.floor(Math.random() * 2);
-            return `<section class="cards grid">
+            return `<section class="cards grid draggable-section" draggable="true">
               ${await Promise.all(
                 Array.from({length: count}).map(
                     async () => `
@@ -86,7 +86,7 @@ export const components = {
         }
     ],
     gallery: [
-        async () => `<section class="gallery grid">
+        async () => `<section class="gallery grid draggable-section" draggable="true">
       ${Array.from({length: 5 + Math.floor(Math.random() * 3)})
             .map(
                 () => `
@@ -94,7 +94,7 @@ export const components = {
             )
             .join("")}
     </section>`,
-        async () => `<section class="gallery carousel">
+        async () => `<section class="gallery carousel draggable-section" draggable="true">
       ${Array.from({length: 4 + Math.floor(Math.random() * 3)})
             .map(
                 () => `
@@ -104,11 +104,11 @@ export const components = {
     </section>`
     ],
     testimonials: [
-        async () => `<section class="testimonials">
+        async () => `<section class="testimonials draggable-section" draggable="true">
       <blockquote>"${await getLoremCached(1)}" <span>- ${Math.random() > 0.5 ? "Alex" : "Taylor"}</span></blockquote>
       <blockquote>"${await getLoremCached(1)}" <span>- ${Math.random() > 0.5 ? "Jamie" : "Chris"}</span></blockquote>
     </section>`,
-        async () => `<section class="testimonials grid">
+        async () => `<section class="testimonials grid draggable-section" draggable="true">
       ${await Promise.all(
             Array.from({length: 2 + Math.floor(Math.random() * 3)}).map(
                 async (_, i) => `
@@ -125,7 +125,7 @@ export const components = {
                 {name: "Enterprise", price: "99€"}
             ];
             const featuredIndex = Math.floor(Math.random() * plans.length);
-            return `<section class="pricing grid">
+            return `<section class="pricing grid draggable-section" draggable="true">
       ${await Promise.all(
                 plans.map(async (plan, idx) => `
           <div class="card ${idx === featuredIndex ? "featured" : ""}">
@@ -153,7 +153,7 @@ export const components = {
                 {name: "Business", price: "89€"}
             ];
             const highlightIndex = Math.floor(Math.random() * plans.length);
-            return `<section class="pricing rows">
+            return `<section class="pricing rows draggable-section" draggable="true">
       ${await Promise.all(
                 plans.map(async (plan, idx) => `
           <div class="row ${idx === highlightIndex ? "highlight" : ""}">
@@ -174,7 +174,7 @@ export const components = {
                 {name: "Pro", price: "59€"},
                 {name: "Ultimate", price: "129€"}
             ];
-            return `<section class="pricing minimal">
+            return `<section class="pricing minimal draggable-section" draggable="true">
       ${plans.map(plan => `
         <div>
           <strong>${plan.price}</strong>
@@ -185,7 +185,7 @@ export const components = {
         }
     ],
     contact: [
-        async () => `<section class="contact">
+        async () => `<section class="contact draggable-section" draggable="true">
       <h2>${Math.random() > 0.5 ? "Contact" : "Get in Touch"}</h2>
       <form>
         <input type="text" placeholder="${Math.random() > 0.5 ? "Your Name" : "Name"}" required>

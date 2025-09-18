@@ -547,3 +547,25 @@ body[style*="0f172a"] .pricing-table td {
     transform: translateY(-2px);
     filter: brightness(1.1);
 }
+
+/* drag and drop options */
+
+.draggable-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.draggable-list li {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    margin: 4px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: grab;
+    user-select: none;
+}
+
+.draggable-list li.dragging {
+    opacity: 0.5;
+}
