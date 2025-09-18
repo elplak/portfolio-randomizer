@@ -40,7 +40,7 @@ It’s not meant to replace serious site builders, but it can be a neat playgrou
 To run locally:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/portfolio-randomizer.git
+git clone https://github.com/elplak/portfolio-randomizer.git
 cd portfolio-randomizer
 # open index.html in your browser
 ```
