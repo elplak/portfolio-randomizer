@@ -1,0 +1,18 @@
+{
+  "name": "frontend_randomizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elplak/frontend-randomizer.git"
+  },
+  "private": true,
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1"
+  }
+}

@@ -569,3 +569,11 @@ body[style*="0f172a"] .pricing-table td {
 .draggable-list li.dragging {
     opacity: 0.5;
 }
+
+.draggable-section {
+    cursor: grab;
+}
+
+.draggable-section:active {
+    cursor: grabbing;
+}

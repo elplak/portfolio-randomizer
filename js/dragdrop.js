@@ -6,6 +6,8 @@ export function enableSectionDragDrop() {
         if (e.target.classList.contains("draggable-section")) {
             dragItem = e.target;
             e.target.classList.add("dragging");
+
+            e.dataTransfer.effectAllowed = "move";
         }
     });
 
@@ -18,6 +20,9 @@ export function enableSectionDragDrop() {
 
     container.addEventListener("dragover", e => {
         e.preventDefault();
+
+        e.dataTransfer.dropEffect = "move";
+
         const afterElement = getDragAfterElement(container, e.clientY);
         const current = document.querySelector(".dragging");
         if (afterElement == null) {
