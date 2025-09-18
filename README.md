@@ -35,7 +35,7 @@ It’s not meant to replace serious site builders, but it can be a neat playgrou
 
 ## Try it
 
-👉 [Live demo on GitHub Pages](https://elplak.github.io/frontend-randomizer/)
+👉 [Live demo on GitHub Pages](https://elplak.github.io/portfolio-randomizer/)
 
 To run locally:
 
