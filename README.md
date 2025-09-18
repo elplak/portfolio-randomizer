@@ -1,41 +1,61 @@
-# Random Frontend Generator
+# Portfolio Randomizer
 
-A tool for experimenting with UI ideas and quickly generating random layouts and themes.
+Portfolio Randomizer is a small web app that creates **portfolio websites on the fly**.  
+Click a button, and you’ll get a random combination of layout, sections, styles, and effects.  
+Every result is a little different: sometimes minimal, sometimes bold, always surprising.
 
-## Live Demo
-[Try it here](https://elplak.github.io/frontend-randomizer/)
+The idea is simple: instead of staring at a blank page when starting a personal website, you can let the generator throw ideas at you. Shuffle the sections, try out new colors, move things around, and export a complete site once you’re happy.
 
-## Features
-- Random layouts (Hero, About, Features, Cards, Gallery, Testimonials, Pricing, Contact)
-- Dynamic themes (colors, fonts, shadows, border radius)
-- Automatic Lorem Ipsum text generation
-- Random images from [Picsum Photos](https://picsum.photos/)
-- Export function: download the generated layout as an HTML file
-- Responsive grid layouts with CSS variables
+## How it works
 
-## Installation and Usage
+The generator picks from a set of ready-made components:
 
-### Run locally
+- Hero sections with random slogans and background images
+- About & Features blocks with placeholder text
+- Project cards and image galleries
+- Testimonials, pricing plans, and a contact form
+
+Each run uses different **themes** (colors, fonts, shadows, border radius) and **effects** (animations, highlights, hover styles). Text comes from the [Bacon Ipsum API](https://baconipsum.com/), images from [Picsum Photos](https://picsum.photos/).
+
+Once the layout is generated you can:
+
+- Reorder sections with **drag & drop**
+- Delete blocks you don’t want
+- Export the whole thing as a ZIP containing HTML, CSS, and images
+
+## Example
+
+Clicking "Generate" might create a page like this:
+
+- A hero section with on top of a random background 
+- An About Me block with placeholder text
+- A grid of project cards with random images
+- Testimonials
+- A pricing table 
+- A contact form with styled inputs
+
+## Motivation
+
+I built this mostly for fun and as a way to explore:
+
+- How far you can go with **vanilla JS and ES Modules**
+- Randomized design (layouts, themes, effects)
+- Small utilities like **JSZip** and **FileSaver** for exporting
+
+It’s not meant to replace serious site builders, but it can be a neat playground for prototyping or simply getting inspired.
+
+## Try it
+
+👉 [Live demo on GitHub Pages](https://elplak.github.io/frontend-randomizer/)
+
+To run locally:
+
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR-USERNAME/random-frontend-generator.git
-cd random-frontend-generator
-
-# Open index.html in your browser
+git clone https://github.com/YOUR-USERNAME/portfolio-randomizer.git
+cd portfolio-randomizer
+# open index.html in your browser
 ```
 
 ## Technologies
-
-* HTML5, CSS3, JavaScript (ES Modules)
-* Font Awesome Icons
-* Bacon Ipsum API (for placeholder text)
-* Picsum Photos API (for placeholder images)
-
-## Contributing
-
-Contributions and ideas are welcome
-
-## License
-
-This project is released under the MIT License.
-You are free to use it as inspiration or as a foundation for your own projects.
+- HTML5, CSS3, JavaScript (ES Modules)
+- JSZip & FileSaver.js for exporting
