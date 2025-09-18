@@ -1,13 +1,13 @@
-import {applyRandomDesign} from "./themes.js";
-import {applyRandomEffects} from "./effects.js";
-import {components} from "./components.js";
-import {enableSectionDragDrop} from "./dragdrop.js";
+import { applyRandomDesign } from "./themes.js";
+import { applyRandomEffects } from "./effects.js";
+import { components } from "../src/components";
+import { enableSectionDragDrop } from "./dragdrop.js";
 
 function shuffle(array) {
     return array
-        .map(value => ({value, sort: Math.random()}))
+        .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
-        .map(({value}) => value);
+        .map(({ value }) => value);
 }
 
 function getSelectedSections() {
