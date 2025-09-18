@@ -451,6 +451,7 @@ body[style*="0f172a"] .contact textarea {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: #fff;
+    margin-top: 1rem;
     padding: 0.9rem 1.8rem;
     border-radius: var(--radius);
     font-weight: 600;
@@ -526,4 +527,23 @@ body[style*="0f172a"] .pricing-table td {
     text-align: right;
     font-weight: 600;
     color: var(--primary);
+}
+
+.pricing.rows .row .btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    min-width: 90px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.pricing.rows .row .btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
