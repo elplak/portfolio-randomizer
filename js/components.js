@@ -22,6 +22,9 @@ export const components = {
       <a href="#" class="${btnVariants[Math.floor(Math.random() * btnVariants.length)]}">
         ${Math.random() > 0.5 ? "Learn more" : "Get started"}
       </a>
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`,
         async () => `<section class="hero split draggable-section" draggable="true">
       <div>
@@ -34,9 +37,15 @@ export const components = {
         </a>
       </div>
       <img src="https://picsum.photos/${Math.random() > 0.5 ? "600/400" : "500/350"}?random=${Math.random()}" alt="Hero">
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`,
         async () => `<section class="hero full-bg draggable-section" draggable="true" style="background-image:url('https://picsum.photos/${1200 + Math.floor(Math.random() * 100)}/${400 + Math.floor(Math.random() * 100)}?random=${Math.random()}')">
       <h1>${slogans[Math.floor(Math.random() * slogans.length)]}</h1>
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`
     ],
     about: [
@@ -46,10 +55,16 @@ export const components = {
         <h2>${Math.random() > 0.5 ? "Who I am" : "About Me"}</h2>
         <p>${await getLoremCached(Math.random() > 0.5 ? 1 : 2)}</p>
       </div>
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`,
         async () => `<section class="about simple draggable-section" draggable="true">
       <h2>${Math.random() > 0.5 ? "About Me" : "My Story"}</h2>
       <p>${await getLoremCached(2)}</p>
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`
     ],
     features: [
@@ -65,6 +80,9 @@ export const components = {
                 </div>`
                 )
             ).then(arr => arr.join(""))}
+              <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </section>`;
         }
     ],
@@ -82,6 +100,9 @@ export const components = {
                 </div>`
                 )
             ).then(arr => arr.join(""))}
+              <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </section>`;
         }
     ],
@@ -93,6 +114,9 @@ export const components = {
         <img src="https://picsum.photos/${Math.random() > 0.5 ? "300/200" : "250/200"}?random=${Math.random()}" alt="Gallery">`
             )
             .join("")}
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`,
         async () => `<section class="gallery carousel draggable-section" draggable="true">
       ${Array.from({length: 4 + Math.floor(Math.random() * 3)})
@@ -101,12 +125,18 @@ export const components = {
         <div><img src="https://picsum.photos/${Math.random() > 0.5 ? "400/250" : "350/220"}?random=${Math.random()}" alt="Gallery"></div>`
             )
             .join("")}
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`
     ],
     testimonials: [
         async () => `<section class="testimonials draggable-section" draggable="true">
       <blockquote>"${await getLoremCached(1)}" <span>- ${Math.random() > 0.5 ? "Alex" : "Taylor"}</span></blockquote>
       <blockquote>"${await getLoremCached(1)}" <span>- ${Math.random() > 0.5 ? "Jamie" : "Chris"}</span></blockquote>
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`,
         async () => `<section class="testimonials grid draggable-section" draggable="true">
       ${await Promise.all(
@@ -115,6 +145,9 @@ export const components = {
         <blockquote>"${await getLoremCached(1)}" <span>- Person ${i + 1}</span></blockquote>`
             )
         ).then(arr => arr.join(""))}
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`
     ],
     pricing: [
@@ -144,6 +177,9 @@ export const components = {
           </div>
         `)
             ).then(arr => arr.join(""))}
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`;
         },
         async () => {
@@ -166,6 +202,9 @@ export const components = {
           </div>
         `)
             ).then(arr => arr.join(""))}
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`;
         },
         async () => {
@@ -181,6 +220,9 @@ export const components = {
           <h3>${plan.name}</h3>
         </div>
       `).join("")}
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`;
         }
     ],
@@ -193,6 +235,9 @@ export const components = {
         <textarea placeholder="${Math.random() > 0.5 ? "Write your message..." : "Message"}" required></textarea>
         <button class="${btnVariants[Math.floor(Math.random() * btnVariants.length)]}">Send</button>
       </form>
+      <button class="delete-section editor-only" onclick="this.closest('section').remove()">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </section>`
     ]
 };

@@ -13,7 +13,11 @@ export function initLayoutControls() {
     });
 
     downloadBtn.addEventListener("click", async () => {
-        const content = document.getElementById("app").innerHTML;
+        const appClone = document.getElementById("app").cloneNode(true);
+        appClone.querySelectorAll(".editor-only").forEach(el => el.remove()); // remove editor-only elements
+
+        const content = appClone.innerHTML;
+
         const toolbarEl = document.querySelector(".toolbar");
         const footerEl = document.querySelector(".footer");
         const footerHTML = footerEl ? `<footer class="footer">${footerEl.innerHTML}</footer>` : "";
@@ -46,7 +50,12 @@ ${footerHTML}
         for (const file of cssFiles) {
             try {
                 const response = await fetch(file);
-                const text = await response.text();
+                let text = await response.text();
+
+                // Editor-spezifisches CSS entfernen, falls noch in styles.css enthalten
+                text = text.replace(/\.delete-section[\s\S]*?\}/g, "");
+                text = text.replace(/\.editor-only[\s\S]*?\}/g, "");
+
                 zip.file(file, text);
             } catch (e) {
                 console.warn(`Konnte ${file} nicht laden:`, e);

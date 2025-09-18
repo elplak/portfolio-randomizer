@@ -577,3 +577,47 @@ body[style*="0f172a"] .pricing-table td {
 .draggable-section:active {
     cursor: grabbing;
 }
+
+.delete-section {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(231, 76, 60, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+section:hover .delete-section {
+    opacity: 1;
+}
+
+.delete-section:hover {
+    transform: scale(1.15);
+}
+
+.delete-section i {
+    pointer-events: none;
+}
+
+section {
+    position: relative;
+}
+
+.editor-only {
+    display: inline-flex;
+}
+
+.export .editor-only {
+    display: none !important;
+}
+
