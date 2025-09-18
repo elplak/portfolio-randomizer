@@ -46,13 +46,13 @@ ${footerHTML}
         const zip = new JSZip();
         zip.file("index.html", fullHTML);
 
-        const cssFiles = ["css/styles.css", "css/effects.css", "css/toolbar.css"];
+        const cssFiles = ["styles/styles.styles", "styles/effects.styles", "styles/toolbar.styles"];
         for (const file of cssFiles) {
             try {
                 const response = await fetch(file);
                 let text = await response.text();
 
-                // Editor-spezifisches CSS entfernen, falls noch in styles.css enthalten
+                // Editor-spezifisches CSS entfernen, falls noch in styles.styles enthalten
                 text = text.replace(/\.delete-section[\s\S]*?\}/g, "");
                 text = text.replace(/\.editor-only[\s\S]*?\}/g, "");
 

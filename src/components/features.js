@@ -1,4 +1,4 @@
-import {getLoremCached} from "../lorem.js";
+import {getLoremCached} from "../utils/lorem.js";
 
 export const features = [
     async () => {

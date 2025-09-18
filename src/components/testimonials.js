@@ -1,4 +1,4 @@
-import {getLoremCached} from "../lorem.js";
+import {getLoremCached} from "../utils/lorem.js";
 
 export const testimonials = [
     async () => `<section class="testimonials draggable-section" draggable="true">

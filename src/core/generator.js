@@ -1,7 +1,7 @@
-import { applyRandomDesign } from "./themes.js";
-import { applyRandomEffects } from "./effects.js";
-import { components } from "./components/index.js";
-import { enableSectionDragDrop } from "./dragdrop.js";
+import { applyRandomDesign } from "../features/themes.js";
+import { applyRandomEffects } from "../features/effects.js";
+import { components } from "../components";
+import { enableSectionDragDrop } from "../utils/dragdrop.js";
 
 function shuffle(array) {
     return array
