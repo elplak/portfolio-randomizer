@@ -138,7 +138,7 @@ export function generateRandomTheme() {
         };
 
         tries++;
-    } while (contrastRatio(theme.bg, theme.text) < 4.5 && tries < 10);
+    } while (!isThemeAccessible(theme) && tries < 20);
 
     return theme;
 }
@@ -147,9 +147,14 @@ export function applyRandomDesign() {
     let theme;
     if (Math.random() < 0.5) {
         theme = themes[Math.floor(Math.random() * themes.length)];
+        if (!isThemeAccessible(theme)) { // if theme is not accessible, generate a new one
+            console.warn("theme was not accessible:", theme);
+            theme = generateRandomTheme();
+        }
     } else {
         theme = generateRandomTheme();
     }
+
 
     document.body.style.setProperty("--primary", theme.primary);
     document.body.style.setProperty("--secondary", theme.secondary);
@@ -162,4 +167,17 @@ export function applyRandomDesign() {
     document.body.style.setProperty("--section-text", theme.text);
     document.body.style.setProperty("--card-bg", theme.bg);
     document.body.style.setProperty("--card-text", theme.text);
+}
+
+function isThemeAccessible(theme) {
+    if (!theme || !theme.bg || !theme.text || !theme.primary || !theme.secondary) {
+        return false;
+    }
+    const minContrast = 4.5;
+    return (
+        contrastRatio(theme.bg, theme.text) >= minContrast &&
+        contrastRatio(theme.bg, theme.primary) >= minContrast &&
+        contrastRatio(theme.bg, theme.secondary) >= minContrast &&
+        contrastRatio(theme.text, theme.primary) >= minContrast
+    );
 }

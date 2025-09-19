@@ -46,5 +46,5 @@ cd portfolio-randomizer
 ```
 
 ## Technologies
-- HTML5, CSS3, JavaScript (ES Modules)
+- HTML, CSS, JavaScript (ES Modules)
 - JSZip & FileSaver.js for exporting
