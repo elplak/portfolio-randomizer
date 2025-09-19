@@ -9,7 +9,11 @@ export const cards = [
             Array.from({ length: count }).map(
                 async () => `
           <div class="card">
-            <img src="https://picsum.photos/${randomBool() ? "300/200" : "280/180"}?random=${Math.random()}" alt="Card">
+           <div class="img-wrapper">
+                <div class="spinner"></div>
+                    <img data-src="https://picsum.photos/${randomBool() ? "300/200" : "280/180"}?random=${Math.random()}" alt="Card">
+            </div>
+           
             <h3>${randomBool() ? "Card" : "Project"}</h3>
             <p>${await getLoremCached(1)}</p>
           </div>`

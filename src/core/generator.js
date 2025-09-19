@@ -1,6 +1,6 @@
 import { applyRandomDesign } from "../features/themes.js";
 import { applyRandomEffects } from "../features/effects.js";
-import { components } from "../components/index.js";
+import { components } from "../components/index.js"; // github pages needs relative path
 import { enableSectionDragDrop } from "../utils/dragdrop.js";
 
 function shuffle(array) {
@@ -46,4 +46,31 @@ export async function generate() {
     applyRandomDesign();
     applyRandomEffects();
     enableSectionDragDrop();
+
+    initLazyLoading();
+}
+
+function initLazyLoading() {
+    const images = document.querySelectorAll("img[data-src]");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+
+                img.onload = () => {
+                    const wrapper = img.closest(".img-wrapper");
+                    if (wrapper) wrapper.classList.add("loaded");
+                };
+
+                img.removeAttribute("data-src");
+                obs.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: "300px"
+    });
+
+    images.forEach(img => observer.observe(img));
 }

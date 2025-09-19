@@ -1,7 +1,7 @@
 import { randomChoice, randomBool } from "../utils/random.js";
 import { slogans } from "../data/slogans.js";
 import { btnVariants } from "../data/buttonVariants.js";
-import {getLoremCached} from "../utils/lorem.js";
+import { getLoremCached } from "../utils/lorem.js";
 
 export const hero = [
     async () => `<section class="hero center draggable-section" draggable="true">
@@ -25,13 +25,20 @@ export const hero = [
         ${randomBool() ? "Discover" : "Explore"}
       </a>
     </div>
-    <img src="https://picsum.photos/${randomBool() ? "600/400" : "500/350"}?random=${Math.random()}" alt="Hero">
+    <div class="img-wrapper">
+      <div class="spinner"></div>
+      <img data-src="https://picsum.photos/${
+        randomBool() ? "600/400" : "500/350"
+    }?random=${Math.random()}" alt="Hero">
+    </div>
     <button class="delete-section editor-only" onclick="this.closest('section').remove()">
       <i class="fa-solid fa-trash"></i>
     </button>
   </section>`,
 
-    async () => `<section class="hero full-bg draggable-section" draggable="true" style="background-image:url('https://picsum.photos/${1200 + Math.floor(Math.random() * 100)}/${400 + Math.floor(Math.random() * 100)}?random=${Math.random()}')">
+    async () => `<section class="hero full-bg draggable-section" draggable="true" style="background-image:url('https://picsum.photos/${
+        1200 + Math.floor(Math.random() * 100)
+    }/${400 + Math.floor(Math.random() * 100)}?random=${Math.random()}')">
     <h1>${randomChoice(slogans)}</h1>
     <button class="delete-section editor-only" onclick="this.closest('section').remove()">
       <i class="fa-solid fa-trash"></i>
